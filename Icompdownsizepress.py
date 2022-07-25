@@ -23,6 +23,7 @@ class downiszepress:
         self.newsizetree=''
         self.newsizesix = ''
         self.newsizenine = ''
+        self.lotopsyon=''
 
     def anrejistreExtension(self, id, extension):
         Image.EXTENSION[extension.lower()] = id.upper()
@@ -62,7 +63,6 @@ class downiszepress:
         self.newsizetree=(self.myHeighttreedown, self.myWidthtreedown)
         self.newsizesix=(self.myHeightsixdown,self.myWidthsixdown)
         self.newsizenine=((self.myHeightninedown,self.myWidthninedowndown))
-        print("N --> lot opsyon")
         print("\n========================")
         opsyon = input("Antre --> X pouw retounen na meni prensipal la.\n Antre sa w chwazi a: ")
         opsyon = opsyon.upper()
@@ -73,22 +73,26 @@ class downiszepress:
                 self.save_path = tkinter.filedialog.asksaveasfilename()
 
                 self.img.save(self.save_path+ "_nouvo.jpg")
+                meni = input("Antre --> X pouw retounen nan meni prensipal la: ")
+                if meni == "X":
+                    l.menu1()
             if (opsyon == "B"):
                 print("\nSuccès")
                 self.img = self.img.resize(self.newsizesix)
                 self.save_path = tkinter.filedialog.asksaveasfilename()
-
                 self.img.save(self.save_path+ "_nouvo.jpg")
-            if (opsyon == "B"):
+                meni = input("Antre --> X pouw retounen nan meni prensipal la: ")
+                if meni == "X":
+                    l.menu1()
+            if (opsyon == "C"):
                 print("\nSuccès")
                 self.img = self.img.resize(self.newsizenine)
                 self.save_path = tkinter.filedialog.asksaveasfilename()
-
                 self.img.save(self.save_path+ "_nouvo.jpg")
-            if (opsyon == "N"):
-                print("\n==========================================")
-                lotopsyon = input("Antre konbyen fwa pi piti ou vle redwi fichye a: ")
-            if (lotopsyon == "X"):
+                meni = input("Antre --> X pouw retounen nan meni prensipal la: ")
+                if meni == "X":
+                    l.menu1()
+            if (self.lotopsyon == "X"):
                 l.menu1()
         except (UnboundLocalError,ValueError):
             pass
@@ -96,8 +100,6 @@ class downiszepress:
     def menuImaj(self):
 
         print("\nKonprese imaj la(diminye nan tay li) --> K")
-        print("Redwi nan rezolisyon imaj la         --> R")
-        print("Konprese epi chanje rezolisyon imaj  --> C")
         print("\n=================================================")
         print("                                                  ")
         chwa2 = input("Antre --> X pouw retounen na meni prensipal la.\n Antre sa w chwazi a: ")
@@ -106,32 +108,9 @@ class downiszepress:
         if (chwa2 == "K"):
             print("\nKonprese imaj a")
             l.redwiTay()
-        if (chwa2 == "R"):
-            print("\nRedwi nan rezolisyon imaj a ")
-        if (chwa2 == "C"):
-            print("\nKonprese epi chanje imaj video ")
-
         if chwa2 == "X":
             l.menu1()
 
-    def menuVideo(self):
-        print("\nKonprese video a(diminye nan tay li) --> K")
-        print("\Redwi nan rezolisyon video a           --> R")
-        print("Konprese epi chanje rezolisyon video   --> C")
-        print("\n=================================================")
-        print("                                                  ")
-        chwa3 = input("Antre --> X pouw retounen na meni prensipal la.\n Antre sa w chwazi a: ")
-        chwa3 = chwa3.upper()
-
-        if (chwa3 == "K"):
-            print("\nKonprese video a")
-        if (chwa3 == "R"):
-            print("\nRedwi nan rezolisyon video a ")
-        if (chwa3 == "C"):
-            print("\nKonprese epi chanje rezolisyon video ")
-
-        if chwa3 == "X":
-            l.menu1()
 
     def menu1(self):
         print(
@@ -158,9 +137,7 @@ class downiszepress:
             "                           |________________________________________________________________________________________|")
 
         print("\nMen sa pou w antre pouw komanse redwi fifye w yo:")
-        print("          IMAGE --> I\n"
-              "          VIDEO --> V\n"
-              "          AUDIO --> A")
+        print("          IMAGE --> I\n")
         print("===================================")
         chwa1 = input("\n Pouw kite pwogram lan antre :--> K \nAntre tip fichye ou vle konprese a: ")
         chwa1 = chwa1.upper()
@@ -170,8 +147,6 @@ class downiszepress:
 
         if (chwa1 == "I"):
             l.menuImaj()
-        if (chwa1 == "V"):
-            l.menuVideo()
 
 
 l = downiszepress()
